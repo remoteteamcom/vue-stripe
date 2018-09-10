@@ -50,10 +50,10 @@
                     return {}
                 }
             },
-            buttonClass: { 
-                type: String, 
-                require: false, 
-                default: 'btn btn-primary' 
+            buttonClass: {
+                type: String,
+                require: false,
+                default: 'btn btn-primary'
             },
             onSuccess: {
                 type: String,
@@ -89,7 +89,7 @@
         },
         computed: {
             btnClass() {
-                return this.buttonClass + ' btn-stripe-checkout'; 
+                return this.buttonClass + ' btn-stripe-checkout';
             }
         },
         methods: {
@@ -172,7 +172,7 @@
                                     formId: this.formId
                                 });
                             } else {
-                                document.querySelector('#'+this.formId).parentElement.submit();
+                                document.querySelector('#' + this.formId).submit();
                             }
                         });
                     }
