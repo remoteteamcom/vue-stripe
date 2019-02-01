@@ -1,5 +1,5 @@
 <template>
-    <div :id="fidentifier">
+    <div :id="identifier">
         <input type="hidden" name="stripeToken" v-model="stripeToken">
         <input type="hidden" name="stripeEmail" v-model="stripeEmail">
 
@@ -18,9 +18,9 @@
 
     export default {
         props: {
-            fidentifier: {
+            identifier: {
               type: String,
-              required: true,
+              required: false,
               default: 'form-stripe-vue'
             },
             stripeKey: {
@@ -133,7 +133,7 @@
                 el.setAttribute('src', scriptSource);
 
                 if(!scriptExists) {
-                    document.querySelector("#"+this.fidentifier).appendChild(el);
+                    document.querySelector("#"+this.identifier).appendChild(el);
                 }
 
                 return new Promise((resolve, reject) => {
@@ -169,10 +169,10 @@
                                 bus.$emit('vue-stripe.success', {
                                     token: self.stripeToken,
                                     email: self.stripeEmail,
-                                    fidentifier: this.fidentifier
+                                    identifier: this.identifier
                                 });
                             } else {
-                                document.querySelector('#' + this.fidentifier).submit();
+                                document.querySelector('#' + this.identifier).submit();
                             }
                         });
                     }
